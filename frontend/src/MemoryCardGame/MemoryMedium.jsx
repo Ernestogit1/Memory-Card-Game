@@ -4,7 +4,7 @@ import { Box, Grid, Button, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import PropTypes from "prop-types";
 import { useSpring, animated } from "@react-spring/web";
-import background from "../assets/images/esy.gif";
+import background from "../assets/images/mode1.gif";
 import bgMusic from "../assets/audio/memory-bg.mp3";
 import axios from "axios";
 
@@ -14,12 +14,12 @@ const defaultDifficulty = "Normal";
 
 // Card Images
 const cardImages = [
-    { id: 1, image: "/images/SpaceShip.jpg" },
-    { id: 2, image: "/images/SpaceShip.jpg" },
-    { id: 3, image: "/images/Meteor.jpg" },
-    { id: 4, image: "/images/Meteor.jpg" },
-    { id: 5, image: "/images/Star.jpg" },
-    { id: 6, image: "/images/Star.jpg" },
+    { id: 1, image: "/images/meteor.png" },
+    { id: 2, image: "/images/meteor.png" },
+    { id: 3, image: "/images/moon.png" },
+    { id: 4, image: "/images/moon.png" },
+    { id: 5, image: "/images/comet.png" },
+    { id: 6, image: "/images/comet.png" },
   ];
 
 // Audio files for matching and final congratulation
@@ -149,8 +149,8 @@ const CardFront = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: "#1b1f34",
-  border: "2px solid #4c5c77",
+  // backgroundColor: "#1b1f34",
+  // border: "2px solid #4c5c77",
   borderRadius: "8px",
   transform: "rotateY(180deg)",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
@@ -232,7 +232,7 @@ const Card = ({ card, handleClick, flipped, matched }) => {
     <CardContainer onClick={handleClick}>
       <CardInner style={{ transform }}>
         <CardFront>
-          <img src={card.image} alt="Card front" style={{ width: "80%", height: "80%" }} />
+          <img src={card.image} alt="Card front" style={{ width: "140%", height: "140%" }} />
         </CardFront>
         <CardBack>
           <img src="/images/coper.gif" alt="Card back" style={{ width: "80%", height: "80%" }} />
@@ -424,7 +424,7 @@ const MemoryMedium = () => {
       </PixelButton>
       <PixelTimerBox>Timer: {timer}s</PixelTimerBox>
       <PixelBox>Learning Moments: {failedAttempts}</PixelBox>
-      <Grid container spacing={3} justifyContent="center" sx={{ maxWidth: 700 }}>
+      <Grid container spacing={10} justifyContent="center" sx={{ maxWidth: 700, marginTop: "-50px" }}>
   {cards.map((card) => (
     <Grid item xs={4} key={card.id} > {/* Changed from xs={3} to xs={4} */}
       <Card

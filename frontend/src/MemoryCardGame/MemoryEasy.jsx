@@ -4,7 +4,7 @@ import { Box, Grid, Button, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import PropTypes from "prop-types";
 import { useSpring, animated } from "@react-spring/web";
-import background from "../assets/images/esy.gif";
+import background from "../assets/images/mode1.gif";
 import bgMusic from "../assets/audio/memory-bg.mp3";
 import axios from "axios";
 
@@ -15,10 +15,10 @@ const defaultDifficulty = "Easy";
 
 // Card Images
 const cardImages = [
-    { id: 1, image: "/images/SpaceShip.jpg" },
-    { id: 2, image: "/images/SpaceShip.jpg" },
-    { id: 3, image: "/images/Meteor.jpg" },
-    { id: 4, image: "/images/Meteor.jpg" },
+    { id: 1, image: "/images/meteor.png" },
+    { id: 2, image: "/images/meteor.png" },
+    { id: 3, image: "/images/comet.png" },
+    { id: 4, image: "/images/comet.png" },
   ];
 
 // Audio files for matching and final congratulation
@@ -141,14 +141,14 @@ const CardFront = styled(Box)({
   position: "absolute",
   top: 0,
   left: 0,
-  width: "100%",
-  height: "100%",
+  width: "80%",
+  height: "80%",
   backfaceVisibility: "hidden",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: "#1b1f34",
-  border: "2px solid #4c5c77",
+  // backgroundColor: "#1b1f34",
+  // border: "2px solid #4c5c77",
   borderRadius: "8px",
   transform: "rotateY(180deg)",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
@@ -230,7 +230,7 @@ const Card = ({ card, handleClick, flipped, matched }) => {
     <CardContainer onClick={handleClick}>
       <CardInner style={{ transform }}>
         <CardFront>
-          <img src={card.image} alt="Card front" style={{ width: "80%", height: "80%" }} />
+          <img src={card.image} alt="Card front" style={{ width: "140%", height: "140%" }} />
         </CardFront>
         <CardBack>
           <img src="/images/coper.gif" alt="Card back" style={{ width: "80%", height: "80%" }} />
@@ -418,7 +418,7 @@ const  MemoryEasy = () => {
       </PixelButton>
       <PixelTimerBox>Timer: {timer}s</PixelTimerBox>
       <PixelBox>Learning Moments: {failedAttempts}</PixelBox>
-      <Grid container spacing={2} justifyContent="center" sx={{ maxWidth: 600 }}>
+      <Grid container spacing={6} justifyContent="center" sx={{ maxWidth: 600, marginTop: "-80px" }}>
   {cards.map((card) => (
     <Grid item xs={6} key={card.id}> {/* Changed from xs={3} to xs={6} for 2 cards per row */}
       <Card
@@ -436,7 +436,7 @@ const  MemoryEasy = () => {
 </Grid>
       <Box sx={{ mt: 2, textAlign: "center" }}>
      
-        <PixelButton onClick={() => { handleSaveNewGame(); handleNewGame(); }} sx={{ mt: 4 }}>
+        <PixelButton onClick={() => { handleSaveNewGame(); handleNewGame(); }} sx={{ mt: 2}}>
           New Game
         </PixelButton>
       </Box>

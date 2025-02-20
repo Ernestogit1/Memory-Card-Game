@@ -4,7 +4,7 @@ import { Box, Grid, Button, Modal, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import PropTypes from "prop-types";
 import { useSpring, animated } from "@react-spring/web";
-import background from "../assets/images/esy.gif";
+import background from "../assets/images/mode1.gif";
 import bgMusic from "../assets/audio/memory-bg.mp3";
 import axios from "axios";
 
@@ -14,18 +14,18 @@ const defaultDifficulty = "Hard";
 
 // Card Images
 const cardImages = [
-  { id: 1, image: "/images/SpaceShip.jpg" },
-  { id: 2, image: "/images/SpaceShip.jpg" },
-  { id: 3, image: "/images/Meteor.jpg" },
-  { id: 4, image: "/images/Meteor.jpg" },
-  { id: 5, image: "/images/Star.jpg" },
-  { id: 6, image: "/images/Star.jpg" },
-  { id: 7, image: "/images/Blackholes.jpg" },
-  { id: 8, image: "/images/Blackholes.jpg" },
-  { id: 9, image: "/images/Galaxies.jpg" },
-  { id: 10, image: "/images/Galaxies.jpg" },
-  { id: 11, image: "/images/SolarSystem.jpg" },
-  { id: 12, image: "/images/SolarSystem.jpg" },
+  { id: 1, image: "/images/earth.png" },
+  { id: 2, image: "/images/earth.png" },
+  { id: 3, image: "/images/jupiter.png" },
+  { id: 4, image: "/images/jupiter.png" },
+  { id: 5, image: "/images/mars.png" },
+  { id: 6, image: "/images/mars.png" },
+  { id: 7, image: "/images/mercury.png" },
+  { id: 8, image: "/images/mercury.png" },
+  { id: 9, image: "/images/neptune.png" },
+  { id: 10, image: "/images/neptune.png" },
+  { id: 11, image: "/images/saturn.png" },
+  { id: 12, image: "/images/saturn.png" },
 ];
 
 // Audio files for matching and final congratulation
@@ -156,8 +156,8 @@ const CardFront = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: "#1b1f34",
-  border: "2px solid #4c5c77",
+  // backgroundColor: "#1b1f34",
+  // border: "2px solid #4c5c77",
   borderRadius: "8px",
   transform: "rotateY(180deg)",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
@@ -239,7 +239,7 @@ const Card = ({ card, handleClick, flipped, matched }) => {
     <CardContainer onClick={handleClick}>
       <CardInner style={{ transform }}>
         <CardFront>
-          <img src={card.image} alt="Card front" style={{ width: "80%", height: "80%" }} />
+          <img src={card.image} alt="Card front" style={{ width: "140%", height: "140%" }} />
         </CardFront>
         <CardBack>
           <img src="/images/coper.gif" alt="Card back" style={{ width: "80%", height: "80%" }} />
@@ -427,7 +427,7 @@ const MemoryCardGame = () => {
       </PixelButton>
       <PixelTimerBox>Timer: {timer}s</PixelTimerBox>
       <PixelBox>Learning Moments: {failedAttempts}</PixelBox>
-      <Grid container spacing={2} justifyContent="center" sx={{ maxWidth: 600 }}>
+      <Grid container spacing={8} justifyContent="center" sx={{ maxWidth: 700, marginTop: "-120px" }}>
         {cards.map((card) => (
           <Grid item xs={3} key={card.id}>
             <Card

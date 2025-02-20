@@ -11,7 +11,7 @@ import axios from "axios";
 
 
 
-const defaultDifficulty = "cEasy";
+const defaultDifficulty = "Easy";
 
 // Card Images
 const cardImages = [

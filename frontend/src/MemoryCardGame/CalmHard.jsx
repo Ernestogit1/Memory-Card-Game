@@ -10,7 +10,7 @@ import axios from "axios";
 
 
 
-const defaultDifficulty = "calm-Hard";
+const defaultDifficulty = "Hard";
 
 // Card Images
 const cardImages = [

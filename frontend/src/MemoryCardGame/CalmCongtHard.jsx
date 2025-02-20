@@ -85,7 +85,7 @@ const PixelButton = styled(Box)(({ theme }) => ({
   }));
   
 
-const Congratulations = () => {
+const Congthard = () => {
   const navigate = useNavigate();
   const audioRef = useRef(null);
   const [bgVolume, setBgVolume] = useState(
@@ -163,4 +163,4 @@ const Congratulations = () => {
   );
 };
 
-export default Congratulations;
+export default Congthard;
