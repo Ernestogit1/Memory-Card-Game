@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
-import backgroundGif from "../assets/images/download.gif";
+import backgroundGif from "../assets/images/play.gif";
 import calmBackground from "../assets/images/calm-wallpaper.jpg";
 import backgroundMusic from "../assets/audio/background-music.mp3";
 import buttonHoverSound from "../assets/audio/button-hover.mp3";
@@ -300,7 +300,7 @@ const Play = () => {
           />
         </div>
 
-        <div className="calm-mode">
+        {/* <div className="calm-mode">
           <h2 className={`${isCalmMode ? "calm-mode-label" : ""} modal-h2`}>
             Calm Mode
           </h2>
@@ -312,7 +312,7 @@ const Play = () => {
             />
             <span className="slider round"></span>
           </label>
-        </div>
+        </div> */}
       </Modal>
 
       <Modal

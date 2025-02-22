@@ -235,7 +235,7 @@ const Card = ({ card, handleClick, flipped, matched }) => {
           <img src={card.image} alt="Card front" style={{ width: "140%", height: "140%" }} />
         </CardFront>
         <CardBack>
-          <img src="/images/coper.gif" alt="Card back" style={{ width: "80%", height: "80%" }} />
+          <img src="/images/Back2.png" alt="Card back" style={{ width: "140%", height: "140%" }} />
         </CardBack>
       </CardInner>
     </CardContainer>

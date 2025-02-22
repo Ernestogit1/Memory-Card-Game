@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { styled } from "@mui/system";
-import background from "../assets/images/congratulations-bg.gif"; // Background image
+import background from "../assets/images/celebration.gif"; // Background image
 import bgMusic from "../assets/audio/celebrate.mp3"; // Background music file
+import congratulationImage from "../assets/images/congrats2.png"; // Path to your congratulation image
 
 // Styled Components
 const PixelBox = styled(Box)(({ theme }) => ({
@@ -18,46 +19,27 @@ const PixelBox = styled(Box)(({ theme }) => ({
   backgroundPosition: "center",
   backgroundRepeat: "no-repeat",
   fontFamily: '"Press Start 2P", cursive',
+  position: "relative",
 }));
 
-const CongratulationsText = styled(Typography)(({ theme }) => ({
-  fontSize: "80px",
-  color: "#FFA500",
-  textAlign: "center",
-  letterSpacing: "5px",
-  textShadow: ` 
-    -3px -3px 0px #FF0000,
-    3px -3px 0px #FF7F00,
-    3px 3px 0px #FFD700,
-    -3px 3px 0px #FF4500
-  `,
-  animation: "bounce 2s infinite",
-  "@keyframes bounce": {
-    "0%, 100%": { transform: "translateY(0)" },
-    "50%": { transform: "translateY(-15px)" },
-  },
-}));
-
-const SubText = styled(Typography)(({ theme }) => ({
-  fontSize: "32px",
-  color: "#ffffff",
-  textShadow: "3px 3px 8px #000",
-  marginTop: "20px",
-  textAlign: "center",
-  fontFamily: '"Press Start 2P", cursive',
-  animation: "fadeIn 2s infinite alternate",
-  "@keyframes fadeIn": {
-    "0%": { opacity: 0.6 },
-    "100%": { opacity: 1 },
-  },
-}));
-
-const ButtonContainer = styled(Box)(({ theme }) => ({
+const ImageContainer = styled(Box)(() => ({
+  position: "relative", 
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  marginTop: "30px",
-  gap: "30px",
+  margin: "0 auto",
+  top: "-10%",
+}));
+
+const ButtonContainer = styled(Box)(({ theme }) => ({
+  position: "absolute",
+  top: "80%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "20px",
 }));
 
 const PixelButton = styled(Box)(({ theme }) => ({
@@ -90,6 +72,7 @@ const Congratulations = () => {
     parseInt(localStorage.getItem("bgVolume"), 10) || 0
   );
 
+  // Audio setup
   useEffect(() => {
     // Initialize audio object
     audioRef.current = new Audio(bgMusic);
@@ -101,21 +84,21 @@ const Congratulations = () => {
       audio.play().catch((error) =>
         console.error("Background music playback failed:", error)
       );
-      document.removeEventListener("click", handleClick); // Remove listener after the first click
+      document.removeEventListener("click", handleClick);
     };
 
     document.addEventListener("click", handleClick);
 
     return () => {
-      // Cleanup on component unmount
+      // Cleanup
       audio.pause();
       audio.currentTime = 0;
       document.removeEventListener("click", handleClick);
     };
   }, [bgVolume]);
 
+  // Listen to volume changes in localStorage
   useEffect(() => {
-    // Listen to changes in localStorage for volume sync
     const handleStorageChange = () => {
       const newVolume = parseInt(localStorage.getItem("bgVolume"), 10) || 0;
       setBgVolume(newVolume);
@@ -130,16 +113,15 @@ const Congratulations = () => {
     };
   }, []);
 
+  // Ensure the game was completed before showing congratulations
   useEffect(() => {
     const gameCompleted = localStorage.getItem("gameCompleted");
-
-    // If game was not completed, send user back
     if (!gameCompleted || gameCompleted !== "true") {
-        navigate("/Play"); 
+      navigate("/Play");
     }
-}, [navigate]);
+  }, [navigate]);
 
-  // Navigation Handlers
+  // Handlers for navigation buttons
   const handlePlayAgain = () => {
     navigate("/memory-card-game");
   };
@@ -151,8 +133,17 @@ const Congratulations = () => {
 
   return (
     <PixelBox>
-      <CongratulationsText>Congratulations!</CongratulationsText>
-      <SubText>Play Again?</SubText>
+      <ImageContainer>
+        <img
+          src={congratulationImage}
+          alt="Congratulations"
+          style={{
+            width: "100%",  // Adjust the width as you desire (e.g., 50%)
+            height: "89%", // Maintain the aspect ratio
+          }}
+        />
+      </ImageContainer>
+
       <ButtonContainer>
         <PixelButton onClick={handlePlayAgain}>Yes</PixelButton>
         <PixelButton onClick={handleExit}>No</PixelButton>

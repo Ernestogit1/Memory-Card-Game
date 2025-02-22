@@ -158,14 +158,14 @@ const CardBack = styled(Box)({
   position: "absolute",
   top: 0,
   left: 0,
-  width: "100%",
-  height: "100%",
+  width: "90%",
+  height: "90%",
   backfaceVisibility: "hidden",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: "#2c2c54",
-  border: "2px solid #00aaff",
+  // backgroundColor: "#2c2c54",
+  // border: "2px solid #00aaff",
   borderRadius: "8px",
   transform: "rotateY(0deg)",
   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)",
@@ -233,7 +233,7 @@ const Card = ({ card, handleClick, flipped, matched }) => {
           <img src={card.image} alt="Card front" style={{ width: "140%", height: "140%" }} />
         </CardFront>
         <CardBack>
-          <img src="/images/coper.gif" alt="Card back" style={{ width: "80%", height: "80%" }} />
+          <img src="/images/Back2.png" alt="Card back" style={{ width: "120%", height: "120%" }} />
         </CardBack>
       </CardInner>
     </CardContainer>
